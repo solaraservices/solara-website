@@ -27,12 +27,18 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,te
 section[id]{scroll-margin-top:16px}
 .skip{position:absolute;left:-999px;top:0;background:#0A1444;color:#fff;padding:12px 16px;z-index:10}
 .skip:focus{left:8px;top:8px}
+.tabbar{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:18px}
+.tabbar button{font:inherit;font-weight:700;font-size:16px;min-height:46px;padding:0 22px;border-radius:999px;border:2px solid #0A1444;background:#fff;color:#0A1444;cursor:pointer}
+.tabbar button[aria-selected="true"]{background:#0A1444;color:#fff}
+.panel{border-radius:24px;overflow:hidden;margin:0 24px}
+.panel[hidden]{display:none}
+#explore{scroll-margin-top:12px}
 @media (max-width:640px){header img{height:170px!important}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
-<a class="skip" href="#who">Skip to main content</a>
+<a class="skip" href="#explore">Skip to main content</a>
 <div style="font-family: Figtree, system-ui, sans-serif; color: #0A1444; background: #FFFFFF; line-height: 1.55; font-size: 17px">
 
 <header style="background: #FFFFFF; border-bottom: 1px solid #E3E8EF">
@@ -44,7 +50,6 @@ section[id]{scroll-margin-top:16px}
 <a href="#who" style="color: #0A1444; text-decoration: none; padding: 11px 0">Who We Support</a>
 <a href="#supports" style="color: #0A1444; text-decoration: none; padding: 11px 0">Supports</a>
 <a href="#approach" style="color: #0A1444; text-decoration: none; padding: 11px 0">Our Approach</a>
-<a href="#referrals" style="color: #0A1444; text-decoration: none; padding: 11px 0">Referrals</a>
 <a href="#careers" style="color: #0A1444; text-decoration: none; padding: 11px 0">Careers</a>
 <a href="#about" style="color: #0A1444; text-decoration: none; padding: 11px 0">About Us</a>
 <a href="#contact" style="background: #0A1444; color: #FFFFFF; text-decoration: none; padding: 11px 22px; border-radius: 999px">Contact Us</a>
@@ -74,7 +79,6 @@ section[id]{scroll-margin-top:16px}
 <option>Crisis support</option>
 <option>Short-term respite</option>
 <option>Behavioral support</option>
-<option>How to make a referral</option>
 </select>
 </div>
 <button type="submit" style="flex: 0 0 auto; height: 48px; padding: 0 24px; border: 0; background: #F9A02B; color: #0A1444; font: inherit; font-weight: 700; border-radius: 10px; cursor: pointer">Explore Services</button>
@@ -84,8 +88,45 @@ section[id]{scroll-margin-top:16px}
 </div>
 </section>
 
-<section id="who" style="background: #FFFFFF">
-<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-direction: column; gap: 40px">
+
+
+
+
+<img src="images/dock.jpg" alt="Three kids on a dock at sunset with their arms raised" style="display: block; width: 100%; height: clamp(240px, 34vw, 520px); object-fit: cover; object-position: center 22%">
+<section style="background: #F9A02B; color: #0A1444">
+<div style="max-width: 1200px; margin: 0 auto; padding: 72px 24px; display: flex; flex-wrap: wrap; gap: 40px 64px">
+<div style="flex: 1 1 380px; display: flex; flex-direction: column; gap: 12px">
+<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase">Our mission</p>
+<p style="margin: 0; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.25; font-weight: 700">To be a safe haven for kids and youth in need.</p>
+</div>
+<div style="flex: 1 1 380px; display: flex; flex-direction: column; gap: 12px">
+<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase">What we stand on</p>
+<p style="margin: 0; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.25; font-weight: 700">Safety first. Dignity always. No young person written off.</p>
+</div>
+</div>
+</section>
+
+
+
+
+
+
+
+<section id="explore" style="background: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; padding: 72px 24px 28px; display: flex; flex-direction: column; gap: 10px; align-items: center; text-align: center">
+<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #B4530A">Get to know Solara</p>
+<h2 style="margin: 0; font-size: clamp(30px, 3.4vw, 42px); line-height: 1.12; font-weight: 800; letter-spacing: -0.015em">Pick a topic to learn more.</h2>
+<div class="tabbar" role="tablist" aria-label="Learn more about Solara">
+<button type="button" role="tab" id="tab-who" aria-controls="who" aria-selected="true" data-tab="who">Who We Support</button>
+<button type="button" role="tab" id="tab-supports" aria-controls="supports" aria-selected="false" data-tab="supports">Supports</button>
+<button type="button" role="tab" id="tab-approach" aria-controls="approach" aria-selected="false" data-tab="approach">Our Approach</button>
+<button type="button" role="tab" id="tab-about" aria-controls="about" aria-selected="false" data-tab="about">About Us</button>
+<button type="button" role="tab" id="tab-careers" aria-controls="careers" aria-selected="false" data-tab="careers">Careers</button>
+</div>
+</div>
+<div style="max-width: 1248px; margin: 0 auto; padding: 0 0 72px">
+<div id="who" class="panel" role="tabpanel" aria-labelledby="tab-who" style="background: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; padding: 48px 24px; display: flex; flex-direction: column; gap: 40px">
 <div style="display: flex; flex-direction: column; gap: 10px; max-width: 720px">
 <p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #B4530A">Who we support</p>
 <h2 style="margin: 0; font-size: clamp(30px, 3.4vw, 42px); line-height: 1.12; font-weight: 800; letter-spacing: -0.015em">Support that meets young people where they are.</h2>
@@ -117,17 +158,17 @@ section[id]{scroll-margin-top:16px}
 <h3 style="margin: 0; font-size: 21px; font-weight: 700">Families and caregivers</h3>
 <p style="margin: 0; color: #46536B">Respite and a plan forward, so the adults in a young person's life can catch their breath too.</p>
 </a>
-<a href="#referrals" style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 12px; padding: 28px; border-radius: 18px; background: #F3F6FA; color: #0A1444; text-decoration: none">
+<a href="#contact" style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 12px; padding: 28px; border-radius: 18px; background: #F3F6FA; color: #0A1444; text-decoration: none">
 <svg aria-hidden="true" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#B4530A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"></path><path d="M15 3v4h4"></path><path d="M9 12h7M9 16h7"></path></svg>
 <h3 style="margin: 0; font-size: 21px; font-weight: 700">Counties and case managers</h3>
 <p style="margin: 0; color: #46536B">A responsive partner for placements, with clear communication and clean documentation.</p>
 </a>
 </div>
 </div>
-</section>
+</div>
 
-<section id="supports" style="background: #F3F6FA">
-<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-direction: column; gap: 40px">
+<div id="supports" class="panel" role="tabpanel" aria-labelledby="tab-supports" style="background: #F3F6FA">
+<div style="max-width: 1200px; margin: 0 auto; padding: 48px 24px; display: flex; flex-direction: column; gap: 40px">
 <div style="display: flex; flex-direction: column; gap: 10px; max-width: 760px">
 <p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #B4530A">Supports we provide</p>
 <h2 style="margin: 0; font-size: clamp(30px, 3.4vw, 42px); line-height: 1.12; font-weight: 800; letter-spacing: -0.015em">The right support, in the right setting.</h2>
@@ -161,39 +202,10 @@ section[id]{scroll-margin-top:16px}
 </div>
 <p style="margin: 0; padding: 18px 22px; background: #FFFFFF; border-radius: 14px; color: #0A1444"><strong>Paying for services:</strong> Many supports can be funded through Minnesota disability waivers. Ask your county case manager, or contact us and we will help you find out what applies.</p>
 </div>
-</section>
+</div>
 
-<img src="images/dock.jpg" alt="Three kids on a dock at sunset with their arms raised" style="display: block; width: 100%; height: clamp(240px, 34vw, 520px); object-fit: cover; object-position: center 22%">
-<section style="background: #F9A02B; color: #0A1444">
-<div style="max-width: 1200px; margin: 0 auto; padding: 72px 24px; display: flex; flex-wrap: wrap; gap: 40px 64px">
-<div style="flex: 1 1 380px; display: flex; flex-direction: column; gap: 12px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase">Our mission</p>
-<p style="margin: 0; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.25; font-weight: 700">To be a safe haven for kids and youth in need.</p>
-</div>
-<div style="flex: 1 1 380px; display: flex; flex-direction: column; gap: 12px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase">What we stand on</p>
-<p style="margin: 0; font-size: clamp(24px, 2.6vw, 32px); line-height: 1.25; font-weight: 700">Safety first. Dignity always. No young person written off.</p>
-</div>
-</div>
-</section>
-
-<section id="about" style="background: #FFFFFF">
-<div style="max-width: 820px; margin: 0 auto; padding: 88px 24px; display: flex; flex-direction: column; gap: 18px; text-align: center">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #B4530A">About us</p>
-<h2 style="margin: 0; font-size: clamp(30px, 3.4vw, 42px); line-height: 1.12; font-weight: 800; letter-spacing: -0.015em">Built by someone who has done the work.</h2>
-<p style="margin: 0; font-size: 19px; color: #46536B">Solara Services was founded by Darris Garner, a behavior specialist with more than seven years in behavioral health. He has spent those years on the floor with people in their hardest moments, writing support plans, coaching staff through crisis, and sitting with families who had run out of options.</p>
-<p style="margin: 0; font-size: 19px; color: #46536B">As a Designated Coordinator in Minnesota's 245D system, Darris has also carried the responsibility behind the scenes: making sure each person's plan is followed, staff are trained, and the documentation holds up. He has seen what good care looks like from both sides, and what happens when it is missing.</p>
-<p style="margin: 0; font-size: 19px; color: #46536B">Darris started Solara for one reason: no child in crisis should be left waiting in an emergency room, an office, or anywhere else that was never meant to care for them. Solara exists to open the door, and to give every young person who walks through it the safety, patience, and skilled care we would want for our own children.</p>
-<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 8px">
-<span style="padding: 10px 18px; background: #F3F6FA; border-radius: 999px; font-size: 16px; font-weight: 600">7+ years in behavioral health</span>
-<span style="padding: 10px 18px; background: #F3F6FA; border-radius: 999px; font-size: 16px; font-weight: 600">Behavior Specialist</span>
-<span style="padding: 10px 18px; background: #F3F6FA; border-radius: 999px; font-size: 16px; font-weight: 600">245D Designated Coordinator</span>
-</div>
-</div>
-</section>
-
-<section id="approach" style="background: #F3F6FA">
-<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-direction: column; gap: 40px">
+<div id="approach" class="panel" role="tabpanel" aria-labelledby="tab-approach" style="background: #F3F6FA">
+<div style="max-width: 1200px; margin: 0 auto; padding: 48px 24px; display: flex; flex-direction: column; gap: 40px">
 <div style="display: flex; flex-direction: column; gap: 10px; max-width: 720px">
 <p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #B4530A">Our approach</p>
 <h2 style="margin: 0; font-size: clamp(30px, 3.4vw, 42px); line-height: 1.12; font-weight: 800; letter-spacing: -0.015em">Professional care, delivered the way a parent would want it.</h2>
@@ -216,30 +228,39 @@ section[id]{scroll-margin-top:16px}
 </div>
 </div>
 </div>
-</section>
-
-<section id="referrals" style="background: #FFFFFF">
-<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start">
-<div style="flex: 1 1 360px; display: flex; flex-direction: column; gap: 14px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #B4530A">Referrals</p>
-<h2 style="margin: 0; font-size: clamp(30px, 3.4vw, 42px); line-height: 1.12; font-weight: 800; letter-spacing: -0.015em">Making a referral should not be the hard part.</h2>
-<p style="margin: 0; color: #46536B">Case managers and families can reach a real person, get a straight answer on fit and openings, and know what happens next.</p>
-<a href="#contact" style="align-self: flex-start; display: inline-flex; align-items: center; height: 50px; padding: 0 26px; background: #0A1444; color: #FFFFFF; font-weight: 700; text-decoration: none; border-radius: 999px">Start a Referral</a>
 </div>
-<ol style="flex: 1 1 480px; margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 16px">
-<li style="display: flex; gap: 20px; padding: 24px; border: 1.5px solid #E3E8EF; border-radius: 16px">
-<span style="flex: 0 0 44px; height: 44px; border-radius: 50%; background: #F9A02B; display: flex; align-items: center; justify-content: center; font-weight: 800">1</span>
-<div style="display: flex; flex-direction: column; gap: 4px"><h3 style="margin: 0; font-size: 20px; font-weight: 700">Reach out</h3><p style="margin: 0; color: #46536B">Call or send the referral form. Tell us what is going on and how soon support is needed.</p></div>
-</li>
-<li style="display: flex; gap: 20px; padding: 24px; border: 1.5px solid #E3E8EF; border-radius: 16px">
-<span style="flex: 0 0 44px; height: 44px; border-radius: 50%; background: #F9A02B; display: flex; align-items: center; justify-content: center; font-weight: 800">2</span>
-<div style="display: flex; flex-direction: column; gap: 4px"><h3 style="margin: 0; font-size: 20px; font-weight: 700">We review fit</h3><p style="margin: 0; color: #46536B">Our team looks at needs, safety, and current openings, and gets back to you as quickly as we can.</p></div>
-</li>
-<li style="display: flex; gap: 20px; padding: 24px; border: 1.5px solid #E3E8EF; border-radius: 16px">
-<span style="flex: 0 0 44px; height: 44px; border-radius: 50%; background: #F9A02B; display: flex; align-items: center; justify-content: center; font-weight: 800">3</span>
-<div style="display: flex; flex-direction: column; gap: 4px"><h3 style="margin: 0; font-size: 20px; font-weight: 700">Plan the start</h3><p style="margin: 0; color: #46536B">We coordinate intake with the family and care team so day one feels steady, not rushed.</p></div>
-</li>
-</ol>
+
+<div id="about" class="panel" role="tabpanel" aria-labelledby="tab-about" style="background: #FFFFFF">
+<div style="max-width: 820px; margin: 0 auto; padding: 48px 24px; display: flex; flex-direction: column; gap: 18px; text-align: center">
+<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #B4530A">About us</p>
+<h2 style="margin: 0; font-size: clamp(30px, 3.4vw, 42px); line-height: 1.12; font-weight: 800; letter-spacing: -0.015em">Built by someone who has done the work.</h2>
+<p style="margin: 0; font-size: 19px; color: #46536B">Solara Services was founded by Darris Garner, a behavior specialist with more than seven years in behavioral health. He has spent those years on the floor with people in their hardest moments, writing support plans, coaching staff through crisis, and sitting with families who had run out of options.</p>
+<p style="margin: 0; font-size: 19px; color: #46536B">As a Designated Coordinator in Minnesota's 245D system, Darris has also carried the responsibility behind the scenes: making sure each person's plan is followed, staff are trained, and the documentation holds up. He has seen what good care looks like from both sides, and what happens when it is missing.</p>
+<p style="margin: 0; font-size: 19px; color: #46536B">Darris started Solara for one reason: no child in crisis should be left waiting in an emergency room, an office, or anywhere else that was never meant to care for them. Solara exists to open the door, and to give every young person who walks through it the safety, patience, and skilled care we would want for our own children.</p>
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 8px">
+<span style="padding: 10px 18px; background: #F3F6FA; border-radius: 999px; font-size: 16px; font-weight: 600">7+ years in behavioral health</span>
+<span style="padding: 10px 18px; background: #F3F6FA; border-radius: 999px; font-size: 16px; font-weight: 600">Behavior Specialist</span>
+<span style="padding: 10px 18px; background: #F3F6FA; border-radius: 999px; font-size: 16px; font-weight: 600">245D Designated Coordinator</span>
+</div>
+</div>
+</div>
+
+<div id="careers" class="panel" role="tabpanel" aria-labelledby="tab-careers" style="background: #0A1444; color: #FFFFFF">
+<div style="max-width: 1200px; margin: 0 auto; padding: 48px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 48px">
+<img src="images/play.jpg" alt="A group of young people laughing and playing together on a lawn" style="flex: 1 1 360px; min-width: 0; width: 100%; height: 360px; object-fit: cover; border-radius: 24px; display: block">
+<div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #F9A02B">Careers</p>
+<h2 style="margin: 0; font-size: clamp(30px, 3.4vw, 42px); line-height: 1.12; font-weight: 800; letter-spacing: -0.015em">Work that matters, with a team that has your back.</h2>
+<p style="margin: 0; color: #D5DCEA">We are building a team of steady, caring people who want to be the adult a young person remembers.</p>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px">
+<li style="display: flex; gap: 12px"><span aria-hidden="true" style="flex: 0 0 8px; height: 8px; margin-top: 10px; border-radius: 50%; background: #F9A02B"></span><span><strong>Real training.</strong> You will be prepared before you are ever on the floor alone.</span></li>
+<li style="display: flex; gap: 12px"><span aria-hidden="true" style="flex: 0 0 8px; height: 8px; margin-top: 10px; border-radius: 50%; background: #F9A02B"></span><span><strong>Leaders who have done the job.</strong> Support from people who know what a hard shift feels like.</span></li>
+<li style="display: flex; gap: 12px"><span aria-hidden="true" style="flex: 0 0 8px; height: 8px; margin-top: 10px; border-radius: 50%; background: #F9A02B"></span><span><strong>Room to grow.</strong> We want you to build a career here, not just cover a shift.</span></li>
+</ul>
+<a href="#contact" style="align-self: flex-start; display: inline-flex; align-items: center; height: 50px; padding: 0 26px; background: #F9A02B; color: #0A1444; font-weight: 700; text-decoration: none; border-radius: 999px">Explore Roles</a>
+</div>
+</div>
+</div>
 </div>
 </section>
 
@@ -276,22 +297,7 @@ section[id]{scroll-margin-top:16px}
 </figure>
 </section>
 
-<section id="careers" style="background: #0A1444; color: #FFFFFF">
-<div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-wrap: wrap; align-items: center; gap: 48px">
-<img src="images/play.jpg" alt="A group of young people laughing and playing together on a lawn" style="flex: 1 1 360px; min-width: 0; width: 100%; height: 360px; object-fit: cover; border-radius: 24px; display: block">
-<div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
-<p style="margin: 0; font-size: 14px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #F9A02B">Careers</p>
-<h2 style="margin: 0; font-size: clamp(30px, 3.4vw, 42px); line-height: 1.12; font-weight: 800; letter-spacing: -0.015em">Work that matters, with a team that has your back.</h2>
-<p style="margin: 0; color: #D5DCEA">We are building a team of steady, caring people who want to be the adult a young person remembers.</p>
-<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px">
-<li style="display: flex; gap: 12px"><span aria-hidden="true" style="flex: 0 0 8px; height: 8px; margin-top: 10px; border-radius: 50%; background: #F9A02B"></span><span><strong>Real training.</strong> You will be prepared before you are ever on the floor alone.</span></li>
-<li style="display: flex; gap: 12px"><span aria-hidden="true" style="flex: 0 0 8px; height: 8px; margin-top: 10px; border-radius: 50%; background: #F9A02B"></span><span><strong>Leaders who have done the job.</strong> Support from people who know what a hard shift feels like.</span></li>
-<li style="display: flex; gap: 12px"><span aria-hidden="true" style="flex: 0 0 8px; height: 8px; margin-top: 10px; border-radius: 50%; background: #F9A02B"></span><span><strong>Room to grow.</strong> We want you to build a career here, not just cover a shift.</span></li>
-</ul>
-<a href="#contact" style="align-self: flex-start; display: inline-flex; align-items: center; height: 50px; padding: 0 26px; background: #F9A02B; color: #0A1444; font-weight: 700; text-decoration: none; border-radius: 999px">Explore Roles</a>
-</div>
-</div>
-</section>
+
 
 <section id="contact" style="background: #FFFFFF">
 <div style="max-width: 1200px; margin: 0 auto; padding: 80px 24px; display: flex; flex-wrap: wrap; gap: 48px">
@@ -307,7 +313,7 @@ section[id]{scroll-margin-top:16px}
 <div style="flex: 1 1 200px; display: flex; flex-direction: column; gap: 6px"><label for="cphone" style="font-size: 14px; font-weight: 700">Phone or email</label><input id="cphone" type="text" required style="height: 48px; border: 1.5px solid #8A96AB; border-radius: 10px; padding: 0 12px; font: inherit; font-size: 16px"></div>
 </div>
 <div style="display: flex; flex-direction: column; gap: 6px"><label for="creason" style="font-size: 14px; font-weight: 700">I am reaching out about</label>
-<select id="creason" style="height: 48px; border: 1.5px solid #8A96AB; border-radius: 10px; padding: 0 12px; font: inherit; font-size: 16px; background: #FFFFFF; color: #0A1444"><option>A referral</option><option>Services for my child</option><option>Working at Solara</option><option>Something else</option></select></div>
+<select id="creason" style="height: 48px; border: 1.5px solid #8A96AB; border-radius: 10px; padding: 0 12px; font: inherit; font-size: 16px; background: #FFFFFF; color: #0A1444"><option>Services for my child</option><option>Working at Solara</option><option>Something else</option></select></div>
 <div style="display: flex; flex-direction: column; gap: 6px"><label for="cmsg" style="font-size: 14px; font-weight: 700">How can we help?</label><textarea id="cmsg" rows="4" style="border: 1.5px solid #8A96AB; border-radius: 10px; padding: 12px; font: inherit; font-size: 16px; resize: vertical"></textarea></div>
 <p style="margin: 0; font-size: 14px; color: #46536B">Please do not include private health details in this form.</p>
 <p id="form-note" role="status" style="margin: 0; font-size: 15px; color: #0A1444; font-weight: 600" hidden></p>
@@ -327,7 +333,6 @@ section[id]{scroll-margin-top:16px}
 <span style="font-weight: 700; color: #FFFFFF; margin-bottom: 4px">Quick links</span>
 <a href="#who" style="color: #D5DCEA; padding: 6px 0">Who We Support</a>
 <a href="#approach" style="color: #D5DCEA; padding: 6px 0">Our Approach</a>
-<a href="#referrals" style="color: #D5DCEA; padding: 6px 0">Referrals</a>
 <a href="#careers" style="color: #D5DCEA; padding: 6px 0">Careers</a>
 <a href="#about" style="color: #D5DCEA; padding: 6px 0">About Us</a>
 </nav>
@@ -348,14 +353,23 @@ section[id]{scroll-margin-top:16px}
 </div>
 <script>
 (function(){
+  var ids=['who','supports','approach','about','careers'];
+  function show(id,scroll){
+    ids.forEach(function(x){var p=document.getElementById(x),t=document.getElementById('tab-'+x);if(!p||!t)return;var on=x===id;p.hidden=!on;t.setAttribute('aria-selected',on?'true':'false');});
+    if(scroll){document.getElementById('explore').scrollIntoView();}
+  }
+  window.solaraGo=function(id){if(ids.indexOf(id)>-1){show(id,true);}else{var el=document.getElementById(id);if(el)el.scrollIntoView();}};
+  Array.prototype.forEach.call(document.querySelectorAll('.tabbar button'),function(b){b.addEventListener('click',function(){show(b.getAttribute('data-tab'),false);});});
+  document.addEventListener('click',function(e){var a=e.target.closest?e.target.closest('a[href^="#"]'):null;if(!a)return;var id=a.getAttribute('href').slice(1);if(ids.indexOf(id)>-1){e.preventDefault();show(id,true);}});
+  var h=location.hash.slice(1);var known=ids.indexOf(h)>-1;show(known?h:'who',known);
   var finder=document.getElementById('finder');
   if(finder) finder.addEventListener('submit',function(e){
     e.preventDefault();
     var who=document.getElementById('iam').value, need=document.getElementById('need').value;
     var target='supports';
     if(who==='Job seeker') target='careers';
-    else if(need==='How to make a referral'||who==='County case manager') target='referrals';
-    document.getElementById(target).scrollIntoView();
+    else if(who==='County case manager') target='contact';
+    window.solaraGo(target);
   });
   var form=document.getElementById('contact-form');
   if(form) form.addEventListener('submit',function(e){
