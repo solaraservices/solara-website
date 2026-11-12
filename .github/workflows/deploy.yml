@@ -4,7 +4,7 @@ on:
     branches: [main]
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 concurrency:
@@ -18,14 +18,21 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      - name: Unpack the uploaded zip into real files (first time only)
+        run: |
+          if [ -f solara-website.zip ] && [ ! -f index.html ]; then
+            unzip -q solara-website.zip
+            git rm -q solara-website.zip
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -q -m "Unpack site files"
+            git push
+          fi
       - name: Prepare site files
         run: |
           mkdir site
-          if [ -f index.html ]; then
-            cp -r index.html images site/
-          else
-            unzip -q solara-website.zip -d site
-          fi
+          cp -r index.html images site/
           ls -R site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
